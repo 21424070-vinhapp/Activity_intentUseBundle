@@ -10,7 +10,7 @@ import android.widget.Button;
 import com.example.activity_intentusebundle.Model.DanhBa;
 
 public class MainActivity extends AppCompatActivity {
-    Button mBtnMoActivity;
+    Button mBtnMoActivity,mBtnMoActivity2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +34,28 @@ public class MainActivity extends AppCompatActivity {
 
                 startActivity(intent);
 
+            }
+        });
+
+        mBtnMoActivity2=findViewById(R.id.btnButtonBundle);
+
+        mBtnMoActivity2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               Intent intent=new Intent(MainActivity.this,MainActivity3.class);
+
+               Bundle bundle=new Bundle();
+
+               bundle.putInt("a",10);
+               bundle.putDouble("b",9.9);
+               bundle.putBoolean("c",false);
+               bundle.putString("d","Obama");
+               DanhBa danhBa=new DanhBa(1,"Obama","0993749372");
+               bundle.putSerializable("e",danhBa);
+
+               intent.putExtra("myBundle",bundle);
+
+               startActivity(intent);
             }
         });
     }
